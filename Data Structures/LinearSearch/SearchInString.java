@@ -1,9 +1,7 @@
-// import java.util.*;
-
 public class SearchInString {
     public static void main(String[] args) {
         String username = "JavaCode";
-        char target = 'o';
+        char target = 'f';
         boolean var = Search(username, target);
         System.out.println(var);
     }
