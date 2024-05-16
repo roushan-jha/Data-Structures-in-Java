@@ -1,46 +1,47 @@
 public class SumOfSubset {
     public static void main(String[] args) {
         SumOfSubset sosub = new SumOfSubset();
-        int[] w = { 8, 9, 5, 10 };
-        int sum = 0;
-        int target = 15;
-        System.out.println(sosub.subset(w, sum, target, 0));
+        int remainingWt = 15;
+        int currentWt = 0;
+        System.out.println(sosub.subset(currentWt, 0, remainingWt));
     }
-    final int M = 15;
+    final static int M = 15;
+    final int[] w = { 5, 8, 9, 10 };
+    // final int[] w = { 25, 10, 15, 20, 5 };
     final int V = 4;
     int[] X = new int[V];
 
-    public int subset(int[] w, int sum, int target, int c) {
+    public int subset(int currentWt, int c, int remainingWt) {
         if(c == V) {
             display(X);
             return 1;
         }
+        
         int count = 0;
-        if(isSafe(w, sum, target, M, c)) {
+
+        if(isSafe(currentWt, w, c, remainingWt, V)) {
             X[c] = 1;
-            count += subset(w, sum + w[c], target - w[c], c + 1);
+            count += subset(currentWt + w[c], c + 1, remainingWt - w[c]);
             X[c] = 0;
-        } 
-        count += subset(w, sum, target, c + 1);
+        } else {
+            X[c] = 0;
+            count += subset(currentWt, c + 1, remainingWt - w[c]);
+        }  
+
         return count;
     }
 
-    public boolean isSafe(int[] w, int sum, int target, int M, int c) {
-        if(c >= V - 1 && target != 0) {
+    static boolean isSafe(int currentWt, int[] w, int c, int remainingWt, int V) {
+        if(w[c] > currentWt) {
             return false;
         }
-        if(w[c] > target) {
+        if(currentWt + w[c] > M) {
             return false;
         }
-        // check subset sum should not be greater than maximum sum
-        if(sum > M) {
+        if(currentWt + remainingWt < M) {
             return false;
         }
-
-        if(sum + target < M) {
-            return false;
-        }
-
+        
         return true;
     }
 
