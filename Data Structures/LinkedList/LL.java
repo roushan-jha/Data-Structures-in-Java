@@ -73,6 +73,26 @@ public class LL {
         size += 1;
     }
 
+    ////////////////////////////////////////////////////////
+    ////////Insert a node at a index using recursion////////
+
+    public void insertRec(int val, int index) {
+        head = insertRec(val, index, head);
+    }
+
+    private Node insertRec(int val, int index, Node node) {
+        if(index == 0) {
+            Node temp = new Node(val, node);
+            size++;
+            return temp;
+        }
+
+        node.next = insertRec(val, index - 1, node.next);
+        return node;
+    }
+
+    ////////////////////////////////////////////////////////
+
     public int deleteFirst() {
 
         if(head == null) {
@@ -179,6 +199,8 @@ public class LL {
         System.out.println(list.delete(3));
         list.display();
         System.out.println(list.find(12));
+        list.insertRec(33, 2);
+        list.display();
 
         System.out.println("Size of Linked List: "+size);
         
