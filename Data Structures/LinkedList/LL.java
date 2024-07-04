@@ -1,6 +1,6 @@
 public class LL {
 
-    private Node head;
+    private static Node head;
     private Node tail;
 
     private static int size;
@@ -170,6 +170,22 @@ public class LL {
 
         return -1;
     }
+
+    ////////////////////////////////////////////////
+    //////Reverse a LinkedList using Recursion//////
+    public void reverse(Node node) {
+        if(node == tail) {
+            tail = head;
+            return;
+        }
+
+        reverse(node.next);
+
+        tail.next = node;
+        tail = node;
+        tail.next = null;
+    }
+    /////////////////////////////////////////////////
 
     public void display() {
         Node temp = head;
