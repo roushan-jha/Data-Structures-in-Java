@@ -23,9 +23,12 @@ public class Trie {
             if(curNode.children[idx] == null) {
                 curNode.children[idx] = new Node();
             }
+            if(j == word.length() - 1) {
+                curNode.endOfWord = true;
+            }
             curNode = curNode.children[idx];
         }
-        curNode.endOfWord = true;
+        
     }
 
     public static boolean search(String key) {

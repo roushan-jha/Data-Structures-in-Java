@@ -1,7 +1,7 @@
 public class WordBreakDown extends Trie {
     public static boolean breakDown(String s, String[] wordDict) {
         for(int i = 0; i < wordDict.length; i++) {
-            insert(wordDict[i]);
+            Trie.insert(wordDict[i]);
         }
 
         return breakDown(s);
@@ -25,8 +25,11 @@ public class WordBreakDown extends Trie {
         // String[] words = {"i", "like", "sam", "samsung", "mobile"};
         // String s = "ilikesamsung";
 
-        String[] words = {"leet", "code"};
-        String s = "leetcode";
+        // String[] words = {"leet", "code"};
+        // String s = "leetcode";
+
+        String[] words = {"abdef","abc","d","def","ef"};
+        String s = "abcdef";
 
         System.out.println(WordBreakDown.breakDown(s, words));
     }
