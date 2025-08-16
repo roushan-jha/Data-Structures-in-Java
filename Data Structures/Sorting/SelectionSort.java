@@ -5,9 +5,25 @@
 import java.util.Arrays;
 
 public class SelectionSort {
+    private static void newSelectionSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int minIndx = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndx]) {
+                    minIndx = j;
+                }
+            }
+            if(minIndx != i) {
+                int temp = arr[i];
+                arr[i] = arr[minIndx];
+                arr[minIndx] = temp;
+            }
+        }
+    }
     public static void main(String[] args) {
         int[] nums = { 2, 3, 5, 1, 4 };
-        selectionSort(nums);
+        // selectionSort(nums);
+        newSelectionSort(nums);
         System.out.println(Arrays.toString(nums));
     }
     static void selectionSort(int[] arr) {

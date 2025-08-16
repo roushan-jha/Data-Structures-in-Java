@@ -12,7 +12,7 @@ public class BubbleSort {
     }
     static void bubbleSort(int[] arr) {
         boolean swapped;
-        for(int i = 0; i < arr.length; i++) {
+        for(int i = 0; i < arr.length - 1; i++) {
             swapped = false;
             for(int j = 1; j < arr.length - i; j++) {
                 if(arr[j] < arr[j-1]) {
